@@ -38,7 +38,7 @@ class KgButton extends HTMLElement {
         let content = template.content.cloneNode(true);
         this.attachShadow({mode: 'open'})
             .appendChild(content);
-        // this.disabled = this.disabled;
+        this.disabled = this.disabled;
     }
 
     createRipple(event) {
