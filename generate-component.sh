@@ -3,7 +3,7 @@
 mkdir ${1^};
 cd ${1^};
 npm init -y;
-npm install --save-dev webpack webpack-cli css-loader extract-loader html-loader raw-loader uglifyjs-webpack-plugin;
+npm install --save-dev webpack webpack-cli css-loader sass-loader extract-loader html-loader raw-loader uglifyjs-webpack-plugin;
 mkdir src;
 mkdir dist;
 touch src/style.css;
@@ -32,6 +32,15 @@ echo "module.exports = {
     module: {
         rules: [
             {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    'raw-loader',
+                    'extract-loader',
+                    'css-loader',
+                    'sass-loader',
+                ],
+            },
+            {
                 test: /\.css$/i,
                 use: [
                     'raw-loader',
@@ -44,7 +53,7 @@ echo "module.exports = {
                 loader: 'html-loader',
                 options: {
                     minimize: true,
-                    attributes: false,
+                    // attributes: false,
                 },
             },
         ],
