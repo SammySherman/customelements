@@ -1,0 +1,27 @@
+:root {
+    --kg-primary: #CC0033;
+    --kg-accent: #FF0040;
+    --kg-success: #69B21A;
+    --kg-info: #0082B2;
+    --kg-warning: #E8B602;
+    --kg-danger: #D62F26;
+}
+
+.custom-primary {
+    --kg-primary: #6A05DD;
+}
+
+@keyframes kg-ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+.kg-ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: kg-ripple 600ms linear;
+    background-color: currentColor;
+    opacity: 15%;
+}
