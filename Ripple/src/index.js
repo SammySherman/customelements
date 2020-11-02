@@ -12,7 +12,6 @@ export default class KgRipple extends HTMLElement {
         this.attachShadow({mode: 'open'})
             .appendChild(content);
         this.parentNode.addEventListener('click', e => {
-            console.log('click', e, this.mode);
             const button = e.target;
             const diameter = Math.max(button.clientWidth, button.clientHeight);
             const radius = diameter / 2;
