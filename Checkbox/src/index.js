@@ -15,7 +15,23 @@ class Checkbox extends HTMLElement {
     }
     set align(val) {
         if (val) this.setAttribute('align', val);
-        else this.removeAttribute('align')
+        else this.removeAttribute('align');
+    }
+    get checked() {
+        return this.getAttribute('checked');
+    }
+    set checked(val) {
+        if (val) this.setAttribute('checked', val);
+        else this.removeAttribute('checked');
+        if(val && this.indeterminate) this.indeterminate = false;
+    }
+    get indeterminate() {
+        return this.getAttribute('indeterminate');
+    }
+    set indeterminate(val) {
+        if (val) this.setAttribute('indeterminate', val);
+        else this.removeAttribute('indeterminate');
+        if (val && this.checked) this.checked = false;
     }
     constructor() {
         super();
@@ -31,9 +47,12 @@ class Checkbox extends HTMLElement {
             if (e.composedPath()[0].nodeName === 'DIV' && !this.disabled) {
                 this.checkbox.checked = !this.checkbox?.checked;
             }
+            this.checked = this.checkbox.checked
         });
         this.disabled = this.disabled;
         this.align = this.align;
+        this.checked = this.checked;
+        this.indeterminate = this.indeterminate;
     }
 }
 customElements.define('kg-checkbox', Checkbox);
