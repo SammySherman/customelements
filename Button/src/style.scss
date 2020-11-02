@@ -25,6 +25,7 @@ button {
 }
 :host {
   display: inline-block;
+  position: relative;
 }
 :host([appearance=outline]) {
   button {

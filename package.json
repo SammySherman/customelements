@@ -1,0 +1,20 @@
+{
+  "name": "customelements",
+  "version": "1.0.0",
+  "description": "## To create a new component Run the generate component script with the name of the component as a parameter. _Use camelCase to avoid issues_. ```shell script generate-component.sh button ``` The command above will create a directory called Button, set up npm,  and generate the boilerplate for a component.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SammySherman/customelements.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SammySherman/customelements/issues"
+  },
+  "homepage": "https://github.com/SammySherman/customelements#readme"
+}

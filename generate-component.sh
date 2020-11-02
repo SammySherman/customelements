@@ -3,14 +3,14 @@
 mkdir ${1^};
 cd ${1^};
 npm init -y;
-npm install --save-dev webpack webpack-cli css-loader sass-loader extract-loader html-loader raw-loader uglifyjs-webpack-plugin;
+npm install --save-dev webpack webpack-cli css-loader sass sass-loader extract-loader html-loader raw-loader uglifyjs-webpack-plugin;
 mkdir src;
 mkdir dist;
-touch src/style.css;
+touch src/style.scss;
 
 echo "<p>${1^} works!</p>" > src/index.html;
 
-echo "import css from './style.css';
+echo "import css from './style.scss';
 import html from './index.html';
 
 class ${1^} extends HTMLElement {

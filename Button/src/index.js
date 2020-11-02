@@ -1,7 +1,7 @@
 import css from './style.scss';
 import html from './index.html';
 
-class KgButton extends HTMLElement {
+export default class KgButton extends HTMLElement {
     get disabled() {
         return this.hasAttribute('disabled') && this.getAttribute('disabled') !== 'false';
     }
@@ -29,7 +29,6 @@ class KgButton extends HTMLElement {
 
     constructor() {
         super();
-        this.addEventListener('click', e => !this.disabled && this.createRipple(e));
     }
 
     connectedCallback() {
@@ -39,20 +38,6 @@ class KgButton extends HTMLElement {
         this.attachShadow({mode: 'open'})
             .appendChild(content);
         this.disabled = this.disabled;
-    }
-
-    createRipple(event) {
-        const button = event.currentTarget;
-        const circle = document.createElement("span");
-        const diameter = Math.max(button.clientWidth, button.clientHeight);
-        const radius = diameter / 2;
-        circle.classList.add('kg-ripple');
-        circle.style.width = circle.style.height = `${diameter}px`;
-        circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
-        circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
-        const ripple = button.getElementsByClassName("kg-ripple")[0];
-        if (ripple) ripple.remove();
-        button.appendChild(circle);
     }
 }
 customElements.define('kg-button', KgButton);
