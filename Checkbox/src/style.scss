@@ -20,7 +20,7 @@
       left: 0;
       top: 1px;
       bottom: 0;
-      right: 0;
+      right: 1px;
       font-size: 14px;
       color: white;
       transition: opacity 90ms linear;
@@ -70,15 +70,6 @@
     padding: 0 10px 0 0;
   }
 }
-:host([disabled]) {
-  cursor: default;
-  input {
-    border-color: #b0b0b0;
-    &:checked {
-      background-color: #b0b0b0;
-    }
-  }
-}
 :host([align=left]) {
   div {
     order: 2;
@@ -120,5 +111,17 @@
       border-color: currentColor;
       background-color: currentColor;
     }
+  }
+}
+:host([disabled]) {
+  cursor: default;
+  input {
+    border-color: #b0b0b0!important;
+  }
+}
+:host([disabled][checked=true]),
+:host([disabled][indeterminate=true]) {
+  input {
+    background-color: #b0b0b0;
   }
 }
