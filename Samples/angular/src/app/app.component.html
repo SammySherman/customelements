@@ -1,0 +1,15 @@
+<label for="disabled-toggle">Disabled</label>
+<input type="checkbox" id="disabled-toggle" [(ngModel)]="disabled"/>
+<p>Is disabled?: {{disabled}}</p>
+
+<p *ngFor="let group of buttons" style="margin-left: 10px">
+  <kg-button *ngFor="let button of group"
+             style="margin-right: 5px;"
+             (click)="buttonClick(button)"
+             [class]="button.class"
+             [color]="button.color"
+             [appearance]="button.appearance"
+             [disabled]="button.disabled || disabled">
+    {{button.text}}
+  </kg-button>
+</p>
