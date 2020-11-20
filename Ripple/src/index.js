@@ -18,19 +18,22 @@ export default class KgRipple extends HTMLElement {
         let content = template.content.cloneNode(true);
         this.attachShadow({mode: 'open'})
             .appendChild(content);
-        this.parentNode.addEventListener('click', e => {
-            const button = e.target;
-            const diameter = Math.max(button.clientWidth, button.clientHeight);
-            const radius = diameter / 2;
-            const ripple = document.createElement("span");
-            ripple.style.height = ripple.style.width = `${diameter}px`;
-            ripple.style.left = this.mode === 'mouse' ? `${e.layerX - radius}px` : `calc(50% - ${radius}px)`;
-            ripple.style.top = this.mode === 'mouse' ? `${e.layerY - radius}px` : `calc(50% - ${radius}px)`;
-            this.shadowRoot.appendChild(ripple);
-            ripple.addEventListener('animationend', e => ripple?.remove());
-        });
+        this.parentNode.addEventListener('mousedown', e => this.trigger(e.target, e.layerX, e.layerY));
         this.mode = this.mode;
     }
-}
-customElements.define('kg-ripple', KgRipple);
 
+    trigger(target, eventX, eventY) {
+        const diameter = Math.max(target.clientWidth, target.clientHeight);
+        const radius = diameter / 2;
+        const ripple = document.createElement("span");
+        ripple.style.height = ripple.style.width = `${diameter}px`;
+        ripple.style.left = this.mode === 'mouse' ? `${eventX - radius}px` : `calc(50% - ${radius}px)`;
+        ripple.style.top = this.mode === 'mouse' ? `${eventY- radius}px` : `calc(50% - ${radius}px)`;
+        this.shadowRoot.appendChild(ripple);
+        ripple.addEventListener('animationend', e => ripple?.remove());
+    }
+}
+try {
+    customElements.define('kg-ripple', KgRipple);
+} catch (e) {
+}

@@ -5,7 +5,6 @@ export default class KgButton extends HTMLElement {
     get disabled() {
         return this.hasAttribute('disabled') && this.getAttribute('disabled') !== 'false';
     }
-
     set disabled(val) {
         if(val) this.setAttribute('disabled', val);
         else this.removeAttribute('disabled');
@@ -15,10 +14,12 @@ export default class KgButton extends HTMLElement {
         return this.getAttribute('appearance');
     }
     set appearance(val) {
-        if (!!val) this.setAttribute('appearance', val);
+        if (!!val) {
+            this.setAttribute('appearance', val);
+            this.ripple.setAttribute('mode',  /icon/.test(val) ?  'center' : 'mouse');
+        }
         else this.removeAttribute('appearance');
     }
-
     get color() {
         return this.getAttribute('color');
     }
@@ -37,7 +38,13 @@ export default class KgButton extends HTMLElement {
         let content = template.content.cloneNode(true);
         this.attachShadow({mode: 'open'})
             .appendChild(content);
+        this.ripple = this.shadowRoot.querySelector('kg-ripple');
         this.disabled = this.disabled;
+        this.color = this.color;
+        this.appearance = this.appearance;
     }
 }
-customElements.define('kg-button', KgButton);
+try {
+    customElements.define('kg-button', KgButton);
+} catch (e) {
+}

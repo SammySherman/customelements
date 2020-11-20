@@ -17,4 +17,7 @@ export class AppComponent {
   buttonClick(button: any): void {
     console.log('Button clicked:', button);
   }
+  checkboxClick(event: any): void {
+    console.log('checkboxClick:', event);
+  }
 }

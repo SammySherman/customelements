@@ -2,6 +2,7 @@
 <input type="checkbox" id="disabled-toggle" [(ngModel)]="disabled"/>
 <p>Is disabled?: {{disabled}}</p>
 
+<kg-checkbox (click)="checkboxClick($event)">Basic</kg-checkbox>
 <p *ngFor="let group of buttons" style="margin-left: 10px">
   <kg-button *ngFor="let button of group"
              style="margin-right: 5px;"

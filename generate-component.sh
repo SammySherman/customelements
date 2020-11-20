@@ -13,7 +13,7 @@ echo "<p>${1^} works!</p>" > src/index.html;
 echo "import css from './style.scss';
 import html from './index.html';
 
-class ${1^} extends HTMLElement {
+class Kg${1^} extends HTMLElement {
     constructor() {
         super();
     }
@@ -25,7 +25,10 @@ class ${1^} extends HTMLElement {
             .appendChild(content);
     }
 }
-customElements.define('kg-$1', ${1^});
+try {
+  customElements.define('kg-$1', ${1^});
+} catch (e) {
+}
 " > src/index.js;
 
 echo "module.exports = {

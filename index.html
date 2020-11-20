@@ -10,12 +10,13 @@
     <body style="background:#fafafa">
     <script src="Button/dist/main.js"></script>
     <script src="Checkbox/dist/main.js"></script>
+    <script src="RadioButtonGroup/dist/main.js"></script>
     <script src="RadioButton/dist/main.js"></script>
     <script src="Ripple/dist/main.js"></script>
-<!--        <script src="index.js"></script>-->
+<!--    <script src="https://localhost:44358/customelements?components=ripple,button,radiobutton,checkbox" async></script>-->
 
      <p style="margin-left: 10px" >
-        <kg-checkbox>Basic</kg-checkbox>
+        <kg-checkbox color="primary">Primary</kg-checkbox>
         <kg-checkbox disabled indeterminate="true">Disabled</kg-checkbox>
     </p>
     <p style="margin-left: 10px" >
@@ -23,14 +24,34 @@
         <kg-checkbox align="left" disabled>Disabled</kg-checkbox>
     </p>
     <p style="margin-left: 10px" >
-        <kg-radio-button></kg-radio-button>
-        <kg-radio-button></kg-radio-button>
+        <kg-radio-button-group>
+            <kg-radio-button color="primary">Yes</kg-radio-button>
+            <kg-radio-button color="primary">No</kg-radio-button>
+        </kg-radio-button-group>
+    </p>
+    <p style="margin-left: 10px" >
+        <kg-radio-button-group class="custom-primary">
+            <kg-radio-button color="primary">Option 1</kg-radio-button>
+            <kg-radio-button color="primary">Option 2</kg-radio-button>
+            <kg-radio-button color="primary">Option 3</kg-radio-button>
+            <kg-radio-button color="primary">Option 4</kg-radio-button>
+        </kg-radio-button-group>
+    </p>
+    <p style="margin-left: 10px" >
+        <kg-radio-button align="left">Basic</kg-radio-button>
+        <kg-radio-button align="left" disabled>Disabled</kg-radio-button>
     </p>
     <p style="margin-left: 10px" class="custom-primary">
             <kg-button disabled="false">Basic</kg-button>
             <kg-button color="primary">Primary</kg-button>
             <kg-button color="accent">Accent</kg-button>
             <kg-button disabled>Disabled</kg-button>
+        </p>
+        <p style="margin-left: 10px">
+            <kg-button appearance="raised">Basic</kg-button>
+            <kg-button appearance="raised" color="primary">Primary</kg-button>
+            <kg-button appearance="raised" color="accent">Accent</kg-button>
+            <kg-button appearance="raised" disabled>Disabled</kg-button>
         </p>
         <p style="margin-left: 10px">
             <kg-button appearance="outline">Basic</kg-button>
@@ -43,6 +64,24 @@
             <kg-button appearance="flat" color="primary">Primary</kg-button>
             <kg-button appearance="flat" color="accent">Accent</kg-button>
             <kg-button appearance="flat" disabled>Disabled</kg-button>
+        </p>
+        <p style="margin-left: 10px">
+            <kg-button appearance="icon">&#10004;</kg-button>
+            <kg-button appearance="icon" color="primary">&#10009;</kg-button>
+            <kg-button appearance="icon" color="accent">&#10005;</kg-button>
+            <kg-button appearance="icon" disabled>&#10006;</kg-button>
+        </p>
+        <p style="margin-left: 10px">
+            <kg-button appearance="fab">&#10004;</kg-button>
+            <kg-button appearance="fab" color="primary">&#10009;</kg-button>
+            <kg-button appearance="fab" color="accent">&#10005;</kg-button>
+            <kg-button appearance="fab" disabled>&#10006;</kg-button>
+        </p>
+        <p style="margin-left: 10px">
+            <kg-button appearance="mini-fab">&#10004;</kg-button>
+            <kg-button appearance="mini-fab" color="primary">&#10009;</kg-button>
+            <kg-button appearance="mini-fab" color="accent">&#10005;</kg-button>
+            <kg-button appearance="mini-fab" disabled>&#10006;</kg-button>
         </p>
     </body>
 </html>

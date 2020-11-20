@@ -79,7 +79,8 @@
     padding: 0 0 0 10px;
   }
 }
-:host(:not([disabled])) {
+:host(:not([disabled])),
+:host([disabled=false]) {
   div {
     &:hover, &:focus {
       .overlay {
@@ -113,15 +114,25 @@
     }
   }
 }
-:host([disabled]) {
+:host([disabled]:not([disabled=false])) {
   cursor: default;
   input {
     border-color: #b0b0b0!important;
   }
 }
-:host([disabled][checked=true]),
-:host([disabled][indeterminate=true]) {
+:host([disabled][checked=true]:not([disabled=false])),
+:host([disabled][indeterminate=true]:not([disabled=false])) {
   input {
     background-color: #b0b0b0;
+  }
+}
+:host([color=primary]) {
+  div {
+    color: var(--kg-primary, var(--kg-info, black));
+  }
+}
+:host([color=accent]) {
+  div {
+    color: var(--kg-accent, var(--kg-info, black));
   }
 }

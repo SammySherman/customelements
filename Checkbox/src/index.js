@@ -1,37 +1,40 @@
 import css from './style.scss';
 import html from './index.html';
 
-class Checkbox extends HTMLElement {
+class KgCheckbox extends HTMLElement {
     get disabled() {
-        return this.hasAttribute('disabled') && this.getAttribute('disabled') !== 'false';
+        return this.getBooleanAttribute('disabled');
     }
     set disabled(val) {
-        if(val) this.setAttribute('disabled', val);
-        else this.removeAttribute('disabled');
-        !!this.checkbox && (this.checkbox.disabled = this.disabled);
+        this.updateAttribute(this, 'disabled', val);
+        if (!!this.checkbox) this.checkbox.disabled = this.disabled;
     }
     get align() {
         return this.getAttribute('align');
     }
     set align(val) {
-        if (val) this.setAttribute('align', val);
-        else this.removeAttribute('align');
+        this.updateAttribute(this, 'align', val);
     }
     get checked() {
-        return this.getAttribute('checked');
+        return this.getBooleanAttribute('checked');
     }
     set checked(val) {
-        if (val) this.setAttribute('checked', val);
-        else this.removeAttribute('checked');
-        if(val && this.indeterminate) this.indeterminate = false;
+        this.updateAttribute(this, 'checked', val);
+        if (val && this.indeterminate) this.indeterminate = false;
+        if (!!this.checkbox) this.checkbox.checked = this.checked;
     }
     get indeterminate() {
-        return this.getAttribute('indeterminate');
+        return this.getBooleanAttribute('indeterminate');
     }
     set indeterminate(val) {
-        if (val) this.setAttribute('indeterminate', val);
-        else this.removeAttribute('indeterminate');
+        this.updateAttribute(this, 'indeterminate', val);
         if (val && this.checked) this.checked = false;
+    }
+    get value() {
+        return this.getAttribute('value');
+    }
+    set value(val) {
+        this.updateAttribute(this, 'value', val);
     }
     constructor() {
         super();
@@ -43,17 +46,27 @@ class Checkbox extends HTMLElement {
         this.attachShadow({mode: 'open'})
             .appendChild(content);
         this.checkbox = this.shadowRoot.querySelector('input');
-        this.addEventListener('click', e => {
-            if (e.composedPath()[0].nodeName === 'DIV' && !this.disabled) {
-                this.checkbox.checked = !this.checkbox?.checked;
-            }
-            this.checked = this.checkbox.checked
-        });
+        this.overlay = this.shadowRoot.querySelector('.overlay');
+        this.label = this.shadowRoot.querySelector('label');
+        this.ripple = this.shadowRoot.querySelector('kg-ripple');
+        this.checkbox.addEventListener('click', e => !this.disabled && (this.checked = !this.checked));
+        this.overlay.addEventListener('click', e => !this.disabled && (this.checked = !this.checked));
+        this.label.addEventListener('click', e => this.ripple.trigger(this.overlay));
         this.disabled = this.disabled;
         this.align = this.align;
         this.checked = this.checked;
         this.indeterminate = this.indeterminate;
+        this.value = this.value;
+    }
+    getBooleanAttribute(name) {
+        return this.hasAttribute(name) && this.getAttribute(name) !== 'false'
+    }
+    updateAttribute(target, name, value) {
+        if (value !== undefined && value !== null && value !== false) target.setAttribute(name, value);
+        else target.removeAttribute(name);
     }
 }
-customElements.define('kg-checkbox', Checkbox);
-
+try {
+    customElements.define('kg-checkbox', KgCheckbox);
+} catch (e) {
+}

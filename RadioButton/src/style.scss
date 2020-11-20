@@ -1,0 +1,123 @@
+:host {
+  line-height: 40px;
+  display: inline-flex;
+  cursor: pointer;
+  user-select: none;
+  div {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    margin: 0;
+    text-align: center;
+    order:1;
+    color: rgba(0,0,0,.54);
+    outline: none;
+    span {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      top: calc(50% - 6px);
+      left: calc(50% - 6px);
+      font-size: 14px;
+      transition: opacity 90ms linear;
+      opacity: 0;
+    }
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    background: currentColor;
+    transition: opacity 200ms cubic-bezier(0.35, 0, 0.25, 1), background-color 200ms cubic-bezier(0.35, 0, 0.25, 1);
+  }
+  input {
+    color: inherit;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+
+    border: 2px solid rgba(0,0,0,.54);
+    transition: border-color 90ms cubic-bezier(0, 0, 0.2, 0.1),
+    background-color 90ms cubic-bezier(0, 0, 0.2, 0.1),
+    opacity 90ms cubic-bezier(0, 0, 0.2, 0.1);
+
+    border-radius: 50%;
+    outline: none;
+    background-color: transparent;
+
+    vertical-align: middle;
+    margin: 0 0 2px 0;
+    cursor: inherit;
+    height: 20px;
+    width: 20px;
+
+    z-index: 2;
+  }
+  label {
+    vertical-align: middle;
+    cursor: inherit;
+    order:2;
+    font-family: Roboto,Helvetica Neue,sans-serif;
+    padding: 0 10px 0 0;
+  }
+}
+:host([align=left]) {
+  div {
+    order: 2;
+  }
+  label{
+    order: 1;
+    padding: 0 0 0 10px;
+  }
+}
+:host(:not([disabled])),
+:host([disabled=false]) {
+  div {
+    &:hover, &:focus {
+      .overlay {
+        opacity: .04;
+      }
+    }
+  }
+}
+:host([checked=true]) {
+  div {
+    color: var(--kg-info);
+    span#checked {
+      opacity: 1;
+      background-color: currentColor;
+    }
+    input {
+      border-color: currentColor;
+    }
+  }
+}
+:host([disabled]:not([disabled=false])) {
+  cursor: default;
+  input {
+    border-color: #b0b0b0!important;
+  }
+}
+:host([disabled][checked=true]:not([disabled=false])) {
+  input {
+    background-color: #b0b0b0;
+  }
+}
+:host([color=primary]) {
+  div {
+    color: var(--kg-primary, var(--kg-info, black));
+  }
+}
+:host([color=accent]) {
+  div {
+    color: var(--kg-accent, var(--kg-info, black));
+  }
+}
