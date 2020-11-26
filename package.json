@@ -4,7 +4,15 @@
   "description": "## To create a new component Run the generate component script with the name of the component as a parameter. _Use camelCase to avoid issues_. ```shell script generate-component.sh button ``` The command above will create a directory called Button, set up npm,  and generate the boilerplate for a component.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "buildButton": "cd Button && npx webpack",
+    "buildCheckbox": "cd Checkbox && npx webpack",
+    "buildInput": "cd Input && npx webpack",
+    "buildRadioButton": "cd RadioButton && npx webpack",
+    "buildRadioButtonGroup": "cd RadioButtonGroup && npx webpack",
+    "buildRipple": "cd Ripple && npx webpack",
+    "buildSidebar": "cd Sidebar && npx webpack",
+    "build": "npm run buildButton && npm run buildCheckbox && npm run buildInput && npm run buildRadioButton && npm run buildRadioButtonGroup && npm run buildRipple && npm run buildSidebar"
   },
   "repository": {
     "type": "git",

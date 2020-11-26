@@ -4,6 +4,7 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Mono:400&amp;display=swap" rel="stylesheet">
         <link rel="dns-prefetch" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons&display=swap" rel="stylesheet">
         <link href="style.css" rel="stylesheet" >
         <title>Getting Started</title>
     </head>
@@ -13,6 +14,7 @@
     <script src="RadioButtonGroup/dist/main.js"></script>
     <script src="RadioButton/dist/main.js"></script>
     <script src="Ripple/dist/main.js"></script>
+    <script src="Input/dist/main.js"></script>
 <!--    <script src="https://localhost:44358/customelements?components=ripple,button,radiobutton,checkbox" async></script>-->
 
      <p style="margin-left: 10px" >
@@ -66,22 +68,39 @@
             <kg-button appearance="flat" disabled>Disabled</kg-button>
         </p>
         <p style="margin-left: 10px">
-            <kg-button appearance="icon">&#10004;</kg-button>
-            <kg-button appearance="icon" color="primary">&#10009;</kg-button>
-            <kg-button appearance="icon" color="accent">&#10005;</kg-button>
-            <kg-button appearance="icon" disabled>&#10006;</kg-button>
+            <kg-button appearance="icon"><i class="material-icons">face</i></kg-button>
+            <kg-button appearance="icon" color="primary"><i class="material-icons">menu</i></kg-button>
+            <kg-button appearance="icon" color="accent"><i class="material-icons">add</i></kg-button>
+            <kg-button appearance="icon" disabled><i class="material-icons">close</i></kg-button>
         </p>
         <p style="margin-left: 10px">
-            <kg-button appearance="fab">&#10004;</kg-button>
-            <kg-button appearance="fab" color="primary">&#10009;</kg-button>
-            <kg-button appearance="fab" color="accent">&#10005;</kg-button>
-            <kg-button appearance="fab" disabled>&#10006;</kg-button>
+            <kg-button appearance="fab"><i class="material-icons">face</i></kg-button>
+            <kg-button appearance="fab" color="primary"><i class="material-icons">menu</i></kg-button>
+            <kg-button appearance="fab" color="accent"><i class="material-icons">add</i></kg-button>
+            <kg-button appearance="fab" disabled><i class="material-icons">close</i></kg-button>
         </p>
         <p style="margin-left: 10px">
-            <kg-button appearance="mini-fab">&#10004;</kg-button>
-            <kg-button appearance="mini-fab" color="primary">&#10009;</kg-button>
-            <kg-button appearance="mini-fab" color="accent">&#10005;</kg-button>
-            <kg-button appearance="mini-fab" disabled>&#10006;</kg-button>
+            <kg-button appearance="mini-fab"><i class="material-icons">face</i></kg-button>
+            <kg-button appearance="mini-fab" color="primary"><i class="material-icons">menu</i></kg-button>
+            <kg-button appearance="mini-fab" color="accent"><i class="material-icons">add</i></kg-button>
+            <kg-button appearance="mini-fab" disabled><i class="material-icons">close</i></kg-button>
         </p>
+        <p style="margin-left: 10px">
+            <kg-input type="number" color="primary"  placeholder="Ex. 12345" style="--kg-input-error-message:'This is a super duper uber long error message!!!'" required></kg-input>
+            <kg-input type="number" color="primary" placeholder="Ex. 12345">Enter a number</kg-input>
+            <kg-input type="date" color="primary" placeholder="Ex. 12345" required>Enter a number</kg-input>
+            <kg-input type="number" color="primary" appearance="fill" placeholder="Ex. 12345">
+                Enter a number
+                <i class="material-icons" slot="icon">add</i>
+            </kg-input>
+            <kg-input type="date" color="primary" appearance="fill" placeholder="Ex. 12345" required>
+                Enter a number
+                <i class="material-icons" slot="icon">today</i>
+            </kg-input>
+            <kg-input type="text" color="primary" appearance="outline" class="custom-primary" placeholder="Ex. Meow meow meow" >Enter text</kg-input>
+            <kg-input type="text" color="primary" appearance="outline" class="custom-primary" placeholder="Ex. Meow meow meow" required>Enter text</kg-input>
+            <kg-input type="tel" color="accent" placeholder="Ex. (319) 931-3212" value="Daddy wasnt there" disabled>Enter a phone number pretty please</kg-input>
+            <kg-input type="tel" color="accent" appearance="fill" placeholder="Ex. (319) 931-3212" value="Daddy wasnt there" disabled>Enter a phone number pretty please</kg-input>
+            <kg-input type="tel" color="accent" appearance="outline" placeholder="Ex. (319) 931-3212" value="Daddy wasnt there" disabled>Enter a phone number pretty please</kg-input>
     </body>
 </html>

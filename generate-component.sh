@@ -26,7 +26,7 @@ class Kg${1^} extends HTMLElement {
     }
 }
 try {
-  customElements.define('kg-$1', ${1^});
+  customElements.define('kg-$1', Kg${1^});
 } catch (e) {
 }
 " > src/index.js;

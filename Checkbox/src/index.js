@@ -7,7 +7,7 @@ class KgCheckbox extends HTMLElement {
     }
     set disabled(val) {
         this.updateAttribute(this, 'disabled', val);
-        if (!!this.checkbox) this.checkbox.disabled = this.disabled;
+        this.updateAttribute(this.checkbox, 'disabled', val);
     }
     get align() {
         return this.getAttribute('align');
@@ -21,7 +21,7 @@ class KgCheckbox extends HTMLElement {
     set checked(val) {
         this.updateAttribute(this, 'checked', val);
         if (val && this.indeterminate) this.indeterminate = false;
-        if (!!this.checkbox) this.checkbox.checked = this.checked;
+        this.updateAttribute(this.checkbox, 'checked', val);
     }
     get indeterminate() {
         return this.getBooleanAttribute('indeterminate');
@@ -31,10 +31,11 @@ class KgCheckbox extends HTMLElement {
         if (val && this.checked) this.checked = false;
     }
     get value() {
-        return this.getAttribute('value');
+        return this.checkbox.value;
     }
     set value(val) {
         this.updateAttribute(this, 'value', val);
+        this.updateAttribute(this.checkbox, 'value', val);
     }
     constructor() {
         super();

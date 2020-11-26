@@ -1,0 +1,270 @@
+* {
+  font-family: var(--kg-font-family, initial);
+}
+:host {
+  outline: none;
+  display: inline-block;
+  .container {
+    position: relative;
+    padding: 0 0 5px;
+    margin: 20px 0;
+    display: inline-block;
+    width:100%;
+    > .input {
+      position: relative;
+      width: 100%;
+      display: inline-block;
+      .icon {
+        position: absolute;
+        right: 12px;
+        top: 8px;
+        color: rgba(0,0,0,.54);
+        pointer-events: none;
+      }
+    }
+    label  {
+      position: absolute;
+      top: 5px;
+      left: 0;
+      transition: all 200ms ease-out, color 0ms;
+      transform-origin: left;
+      color: rgba(0,0,0,.54);
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      max-width: 100%;
+      width: auto;
+      cursor: text;
+      visibility: hidden;
+      user-select: none;
+      z-index: 1;
+    }
+    input {
+      height: 20px;
+      border: 0;
+      outline: none;
+      background: transparent;
+      border-bottom: 1px solid;
+      border-radius: 0;
+      padding: 10px 0;
+      font-size: 16px;
+      width: auto;
+      &::placeholder {
+        user-select: none;
+      }
+    }
+    .underline {
+      position: absolute;
+      height:2px;
+      background: currentColor;
+      left: 50%;
+      right: 50%;
+      bottom: -1px;
+    }
+    .error {
+      font-size: 12px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -14px;
+      opacity: 0;
+      color: currentColor;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      user-select: none;
+      transition: opacity 50ms ease-out;
+      &::after {
+        content: var(--kg-input-error-message, 'Invalid');
+      }
+    }
+    &.focused,
+    &.has-error {
+      .underline {
+        left: 0;
+        right: 0;
+        transition: left 200ms ease-out, right 200ms ease-out;
+      }
+      label {
+        color: currentColor;
+      }
+    }
+    &.focused,
+    &.has-value {
+      label {
+        top: -13px;
+        font-size: 12px;
+        cursor: default;
+      }
+    }
+    &.has-label:not(.focused):not(.has-value) {
+      input::placeholder {
+        color: transparent;
+      }
+    }
+    &.has-label {
+      label {
+        visibility: visible;
+      }
+    }
+    &.has-error {
+      color: var(--kg-danger, black)!important;
+      .error {
+        opacity: 1;
+      }
+    }
+  }
+}
+:host([color=primary]) {
+  .container {
+    color: var(--kg-primary, var(--kg-info, black));
+  }
+}
+:host([color=accent]) {
+  .container {
+    color: var(--kg-accent, var(--kg-info, black));
+  }
+}
+:host([appearance=fill]) {
+  .container {
+    .background {
+      position: absolute;
+      top: -20px;
+      background: rgba(0,0,0,.04);
+      left: 0;
+      right: 0;
+      bottom: 5px;
+      z-index: -1;
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+    }
+  }
+}
+:host([appearance=outline]) {
+  .container {
+    .background {
+      position: absolute;
+      top: -20px;
+      border: 1px solid rgba(0,0,0,.04);
+      left: 0;
+      right: 0;
+      bottom: 3px;
+      z-index: -1;
+      border-radius: 5px;
+      transition: border 200ms ease-out;
+    }
+    .underline {
+      display: none;
+    }
+    input {
+      border: 0;
+    }
+    label {
+      max-width: calc(100% - 20px);
+      background: #fafafa;
+      left: 7px;
+      padding-left: 3px;
+      padding-right: 3px;
+      margin-right: 7px;
+    }
+    &.focused,
+    &.has-value {
+      label {
+        top: -24px;
+      }
+    }
+    &.focused, &.has-error {
+      .background {
+        border-width: 2px;
+        border-color: currentColor;
+      }
+    }
+    &.has-error {
+
+    }
+  }
+}
+:host([appearance=outline]:not([disabled])), :host([appearance=outline][disabled=false]) {
+  .container {
+    &:not(.focused):not(.has-error):hover {
+      .background {
+        border-width: 2px;
+        border-color: black;
+      }
+    }
+  }
+}
+:host([appearance=outline][disabled]:not([disabled=false])) {
+  .container {
+    .background {
+      border-style: dashed;
+    }
+  }
+}
+:host([appearance=fill]) {
+  .container {
+    label {
+      left: 10px;
+      right: 10px;
+    }
+  }
+}
+:host([appearance=fill]),
+:host([appearance=outline]) {
+  .container {
+    input {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .error {
+      left: 10px;
+      right: 10px;
+    }
+  }
+}
+:host([appearance=fill]:not([type=date])),
+:host([appearance=outline]:not([type=date])) {
+  .container {
+    &:not(.focused):not(.has-value) {
+      label {
+        top: 0;
+      }
+    }
+  }
+}
+:host([type=date]) {
+  .container {
+    label {
+      top: -13px;
+      font-size: 12px;
+      cursor: default;
+    }
+    input {
+      cursor: text;
+    }
+    ::-webkit-inner-spin-button { display: none; }
+    ::-webkit-calendar-picker-indicator { opacity: 0; transform: scale(0.8) }
+  }
+}
+:host([disabled]:not([disabled=false])) {
+  .container {
+    .underline {
+      left: 0;
+      right: 0;
+      background-position: 0;
+      background-color: transparent;
+      background-image: linear-gradient(90deg,rgba(0,0,0,.42) 0,rgba(0,0,0,.42) 33%,transparent 0);
+      background-size: 4px 100%;
+      background-repeat: repeat-x;
+    }
+    input {
+      color: rgba(0,0,0,.38);
+      border-color: transparent;
+      cursor: default;
+    }
+    label {
+      color: rgba(0,0,0,.38);
+      cursor: default;
+    }
+  }
+}

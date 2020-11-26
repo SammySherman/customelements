@@ -3,22 +3,19 @@ import html from './index.html';
 
 export default class KgButton extends HTMLElement {
     get disabled() {
-        return this.hasAttribute('disabled') && this.getAttribute('disabled') !== 'false';
+        return this.getBooleanAttribute('disabled');
     }
     set disabled(val) {
-        if(val) this.setAttribute('disabled', val);
-        else this.removeAttribute('disabled');
+        this.updateAttribute(this, 'disabled', val);
+        this.updateAttribute(this.button, 'disabled', val);
     }
 
     get appearance() {
         return this.getAttribute('appearance');
     }
     set appearance(val) {
-        if (!!val) {
-            this.setAttribute('appearance', val);
-            this.ripple.setAttribute('mode',  /icon/.test(val) ?  'center' : 'mouse');
-        }
-        else this.removeAttribute('appearance');
+        this.updateAttribute(this, 'appearance', val);
+        this.updateAttribute(this.ripple, 'appearance', /icon/.test(val) ?  'center' : 'mouse');
     }
     get color() {
         return this.getAttribute('color');
@@ -39,9 +36,17 @@ export default class KgButton extends HTMLElement {
         this.attachShadow({mode: 'open'})
             .appendChild(content);
         this.ripple = this.shadowRoot.querySelector('kg-ripple');
+        this.button = this.shadowRoot.querySelector('button');
         this.disabled = this.disabled;
         this.color = this.color;
         this.appearance = this.appearance;
+    }
+    getBooleanAttribute(name) {
+        return this.hasAttribute(name) && this.getAttribute(name) !== 'false'
+    }
+    updateAttribute(target, name, value) {
+        if (value !== undefined && value !== null && value !== false) target.setAttribute(name, value);
+        else target.removeAttribute(name);
     }
 }
 try {

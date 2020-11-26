@@ -1,3 +1,6 @@
+* {
+  font-family: var(--kg-font-family, initial);
+}
 :host {
   line-height: 40px;
   display: inline-flex;
@@ -66,7 +69,6 @@
     vertical-align: middle;
     cursor: inherit;
     order:2;
-    font-family: Roboto,Helvetica Neue,sans-serif;
     padding: 0 10px 0 0;
   }
 }

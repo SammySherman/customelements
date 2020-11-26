@@ -7,7 +7,7 @@ class KgRadioButton extends HTMLElement {
     }
     set disabled(val) {
         this.updateAttribute(this, 'disabled', val);
-        if (!!this.radiobutton) this.radiobutton.disabled = this.disabled;
+        this.updateAttribute(this.radiobutton, 'disabled', val);
     }
     get align() {
         return this.getAttribute('align');
@@ -20,7 +20,7 @@ class KgRadioButton extends HTMLElement {
     }
     set checked(val) {
         this.updateAttribute(this, 'checked', val);
-        if (!!this.radiobutton) this.radiobutton.checked = this.checked;
+        this.updateAttribute(this.radiobutton, 'checked', val);
     }
     get name() {
         return this.getAttribute('name');
@@ -34,6 +34,7 @@ class KgRadioButton extends HTMLElement {
     }
     set value(val) {
         this.updateAttribute(this,'value', val);
+        this.updateAttribute(this.radiobutton,'value', val);
     }
     constructor() {
         super();
