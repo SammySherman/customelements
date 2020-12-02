@@ -1,10 +1,13 @@
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons&display=swap" rel="stylesheet">
 <span class="container">
     <span class="input">
         <input id="input" />
-        <span class="icon"><slot name="icon"></slot></span>
+        <span class="date-icon"><i class="material-icons">today</i></span>
         <span class="underline"></span>
     </span>
     <label for="input"><slot></slot></label>
     <span class="error"></span>
     <div class="background"></div>
+    <div class="overlay"></div>
+    <div class="calendar"><kg-calendar mini></kg-calendar></div>
 </span>

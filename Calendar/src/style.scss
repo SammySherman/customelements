@@ -1,0 +1,154 @@
+* {
+  font-family: var(--kg-font-family, initial);
+}
+:host {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.week {
+  display: inline-flex;
+  justify-content: space-evenly;
+  width: 100%;
+  border-top: 1px solid #dadce0;
+  border-right: 1px solid #dadce0;
+  border-left: 1px solid #dadce0;
+
+  &:last-of-type {
+    border-bottom: 1px solid #dadce0;
+  }
+}
+.actions {
+  display: inline-flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  .pagination {
+    display: inline-flex;
+  }
+}
+
+.sub-header {
+  padding: 20px 15px 10px;
+  display: none;
+}
+
+.day {
+  width: 100%;
+  padding: 15px 15px 11%;
+  border-right: 1px solid #dadce0;
+  color: rgba(0,0,0,.75);
+  cursor: pointer;
+  &:hover {
+    &:not(.selected) {
+      .number {
+        .background {
+          background: #efefef;
+        }
+      }
+    }
+    .number {
+      .background {
+        transition: background-color 200ms ease-out, color 200ms ease-out;
+      }
+    }
+  }
+  &.blur {
+    color: #8d8d8d;
+  }
+  &:last-of-type {
+    border: none!important;
+  }
+
+  .number {
+    width: 20px;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    color: inherit;
+    .background {
+      z-index: -1;
+      position: absolute;
+      top: -7px;
+      left: -7px;
+      right: -7px;
+      bottom: -7px;
+      border-radius: 50%;
+    }
+  }
+
+  &.selected {
+    .number {
+      color: white;
+      .background {
+        background: currentColor;
+      }
+    }
+  }
+
+  &.today {
+    .number {
+      .background {
+        border: 1px solid #ddd;
+      }
+    }
+  }
+}
+
+.week-header {
+  display: inline-flex;
+  justify-content: space-evenly;
+  width: 100%;
+  span {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 5px;
+  }
+}
+
+.header,
+.sub-header {
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+:host([mini]:not([mini=false])) {
+  width: 290px;
+  .week-header {
+    border-bottom: 1px solid rgba(0,0,0,.38);
+    span {
+      font-size: 0;
+      color: rgba(0,0,0,.38);
+      &:first-letter {
+        font-size: 14px;
+      }
+    }
+  }
+  .sub-header {
+    display: initial;
+    color: rgba(0,0,0,.54);
+  }
+  .day {
+    border: none!important;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 15px;
+    &.blur {
+      visibility: hidden;
+    }
+  }
+  .week {
+    border: none!important;
+  }
+}
+:host([color=primary]) {
+  .background {
+    color: var(--kg-primary, black);
+  }
+}
+:host([color=accent]) {
+  .background {
+    color: var(--kg-accent, black);
+  }
+}
