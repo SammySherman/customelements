@@ -52,6 +52,15 @@ class KgInput extends HTMLElement {
         updateAttribute(this, 'color', val);
         updateAttribute(this.calendar, 'color', val);
     }
+    get label() {
+        return this.getAttribute('label');
+    }
+    set label(val) {
+        updateAttribute(this, 'label', val);
+        if (this.labelEl) this.labelEl.innerText = val || '';
+        if (!val) this.containerEl?.classList.remove('has-label');
+        else this.containerEl?.classList.add('has-label');
+    }
     constructor() {
         super();
     }
@@ -62,29 +71,32 @@ class KgInput extends HTMLElement {
         this.attachShadow({mode: 'open'})
             .appendChild(content);
         this.input = this.shadowRoot.querySelector('input');
-        this.container = this.shadowRoot.querySelector('.container');
+        this.containerEl = this.shadowRoot.querySelector('.container');
         this.error = this.shadowRoot.querySelector('.error');
         this.calendar = this.shadowRoot.querySelector('kg-calendar');
+        this.labelEl = this.shadowRoot.querySelector('label');
         this.input.addEventListener('input', e => this.onValueUpdated());
         this.input.addEventListener('focus', e => {
-            this.container.classList.add('focused');
+            this.containerEl.classList.add('focused');
             if (!this.touched) {
                 this.touched = true;
-                this.container.classList.add('touched');
+                this.containerEl.classList.add('touched');
             }
-            if (this.input.validity.valid) this.container.classList.remove('has-error');
-            else this.container.classList.add('has-error');
+            this.updateValidity();
         });
-        this.input.addEventListener('blur', e => this.container.classList.remove('focused'));
+        this.input.addEventListener('blur', e => this.containerEl.classList.remove('focused'));
         this.shadowRoot.querySelector('.date-icon').addEventListener('click', e => {
-           this.container.classList.toggle('show-calendar');
+            e.stopPropagation();
+            this.calendar.reset();
+            this.containerEl.classList.toggle('show-calendar');
         });
-        this.shadowRoot.querySelector('.overlay').addEventListener('click', e => {
-            this.container.classList.remove('show-calendar');
+        document.addEventListener('click', e => {
+            this.containerEl.classList.remove('show-calendar');
         });
         addEventListener(this.calendar, '.day', 'click', e => {
-            this.container.classList.remove('show-calendar');
+            // this.container.classList.remove('show-calendar');
             this.input.valueAsDate = this.calendar.value;
+            this.updateValidity();
         });
 
         this.disabled = this.disabled;
@@ -94,19 +106,20 @@ class KgInput extends HTMLElement {
         this.appearance = this.appearance;
         this.required = this.required;
         this.color = this.color;
+        this.label = this.label;
+    }
 
-        setTimeout(() => {
-            if (this.childNodes.length === 0) this.container.classList.remove('has-label');
-            else this.container.classList.add('has-label');
-        });
+    updateValidity() {
+        if (this.input.checkValidity()) this.containerEl.classList.remove('has-error');
+        else this.containerEl.classList.add('has-error');
     }
 
     onValueUpdated() {
         if (this.input.value === undefined || this.input.value === null || this.input.value === "")
-            this.container.classList.remove('has-value');
-        else this.container.classList.add('has-value');
-        if (this.input.validity.valid) this.container.classList.remove('has-error');
-        else this.container.classList.add('has-error');
+            this.containerEl.classList.remove('has-value');
+        else this.containerEl.classList.add('has-value');
+        if (this.input.validity.valid) this.containerEl.classList.remove('has-error');
+        else this.containerEl.classList.add('has-error');
         if (this.calendar && this.input.value) {
             const parts = this.input.value.split("-");
             this.calendar.value = new Date(parts[0], parts[1] - 1, parts[2], 0, 0, 0);

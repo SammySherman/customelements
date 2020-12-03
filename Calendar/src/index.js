@@ -23,7 +23,7 @@ class KgCalendar extends HTMLElement {
         else this.removeAttribute('color');
     }
     get value() {
-        return this._value;
+        return this._value ? new Date(this._value.getTime()) : undefined;
     }
     set value(val) {
         this._value = val;
@@ -44,14 +44,15 @@ class KgCalendar extends HTMLElement {
         this.attachShadow({mode: 'open'})
             .appendChild(content);
 
-        const target = this.value || new Date();
         this.header = this.shadowRoot.querySelector('.header');
         this.subHeader = this.shadowRoot.querySelector('.sub-header');
-        this.renderCalendar(target);
+        this._target = this.value || new Date();
+        this.renderCalendar(this._target);
 
         this.shadowRoot.querySelector('.pagination').addEventListener('click', e => {
-           target.setMonth(target.getMonth() + Number(e.target.dataset.step));
-            this.renderCalendar(target);
+            e.stopPropagation();
+            this._target.setMonth(this._target.getMonth() + Number(e.target.dataset.step));
+            this.renderCalendar(this._target);
         });
 
         addEventListener(this, '.day', 'click', e => {
@@ -59,12 +60,13 @@ class KgCalendar extends HTMLElement {
             e.target.classList.add('selected');
             this.selected = e.target;
             this._value = new Date(Number(this.selected.dataset.time));
+            this._target = this.value;
         });
     }
 
     getCalendarDays(target) {
         const days = []; // Date[][]
-        target = (target || new Date());
+        if (!target) return days;
         target.setHours(0, 0, 0);
         // SetDate(0) sets to last day of previous month
         const endOfCalendar = new Date(target.getTime());
@@ -99,6 +101,11 @@ class KgCalendar extends HTMLElement {
         this.header.innerHTML = el.outerHTML;
         this.subHeader.innerText = target.toLocaleString("default", {month: "short"}).toUpperCase();
         this.days = [...this.shadowRoot.querySelectorAll('.day')];
+    }
+
+    reset() {
+        this._target = this.value || new Date();
+        this.renderCalendar(this._target);
     }
 
     makeWeekEl(week, target) {

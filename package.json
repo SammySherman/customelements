@@ -14,6 +14,7 @@
     "buildSidebar": "cd Sidebar && npx webpack",
     "buildCalendar": "cd Calendar && npx webpack",
     "buildIcon": "cd Icon && npx webpack",
+    "buildSelect": "cd Select && npx webpack",
     "build": "npm run buildButton && npm run buildCheckbox && npm run buildInput && npm run buildRadioButton && npm run buildRadioButtonGroup && npm run buildRipple && npm run buildSidebar"
   },
   "repository": {

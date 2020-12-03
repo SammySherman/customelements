@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f6089ae-6420-4d76-aedf-a92aa349658c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Calendar/src/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Utilities/dom.utils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/calendar.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Calendar/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Calendar/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icon/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Icon/src/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Input/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Input/src/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Input/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Input/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Input/src/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/Input/src/style.scss" afterDir="false" />
@@ -88,7 +87,8 @@
       <workItem from="1605207808779" duration="1213000" />
       <workItem from="1605812869632" duration="18766000" />
       <workItem from="1606337627242" duration="32587000" />
-      <workItem from="1606847408327" duration="29884000" />
+      <workItem from="1606847408327" duration="30554000" />
+      <workItem from="1606922952750" duration="27623000" />
     </task>
     <servers />
   </component>

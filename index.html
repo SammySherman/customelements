@@ -16,8 +16,53 @@
         <script src="Ripple/dist/main.js"></script>
         <script src="Input/dist/main.js"></script>
         <script src="Calendar/dist/main.js"></script>
+        <script src="Select/dist/main.js"></script>
+        <script src="Icon/dist/main.js"></script>
     <!--    <script src="https://localhost:44358/customelements?components=ripple,button,radiobutton,checkbox" async></script>-->
-
+        <p style="margin-left: 10px" >
+            <kg-select placeholder="Ex. Audi" color="primary" label="Favorite car">
+                <option value="1">Audi</option>
+                <option value="2">BMW</option>
+                <option value="3">Citroen</option>
+                <option value="4">Ford</option>
+                <option value="5">Honda</option>
+                <option value="6">Jaguar</option>
+                <option value="7">Land Rover</option>
+                <option value="8">Mercedes</option>
+                <option value="9">Mini</option>
+                <option value="10">Nissan</option>
+                <option value="11">Toyota</option>
+                <option value="12">Volvo</option>
+            </kg-select>
+            <kg-select placeholder="Ex. Audi" color="primary" label="Favorite car" appearance="fill">
+                <option value="1">Audi</option>
+                <option value="2">BMW</option>
+                <option value="3">Citroen</option>
+                <option value="4">Ford</option>
+                <option value="5">Honda</option>
+                <option value="6">Jaguar</option>
+                <option value="7">Land Rover</option>
+                <option value="8">Mercedes</option>
+                <option value="9">Mini</option>
+                <option value="10">Nissan</option>
+                <option value="11">Toyota</option>
+                <option value="12">Volvo</option>
+            </kg-select>
+            <kg-select placeholder="Ex. Audi" color="primary" label="Favorite car" appearance="outline">
+                <option value="1">Audi</option>
+                <option value="2">BMW</option>
+                <option value="3">Citroen</option>
+                <option value="4">Ford</option>
+                <option value="5">Honda</option>
+                <option value="6">Jaguar</option>
+                <option value="7">Land Rover</option>
+                <option value="8">Mercedes</option>
+                <option value="9">Mini</option>
+                <option value="10">Nissan</option>
+                <option value="11">Toyota</option>
+                <option value="12">Volvo</option>
+            </kg-select>
+        </p>
          <p style="margin-left: 10px" >
             <kg-checkbox color="primary">Primary</kg-checkbox>
             <kg-checkbox disabled indeterminate="true">Disabled</kg-checkbox>
@@ -88,21 +133,19 @@
         </p>
         <p style="margin-left: 10px">
             <kg-input type="number" color="primary"  placeholder="Ex. 12345" style="--kg-input-error-message:'This is a super duper uber long error message!!!'" required></kg-input>
-            <kg-input type="number" color="primary" placeholder="Ex. 12345">Enter a number</kg-input>
-            <kg-input type="date" color="primary" placeholder="Ex. 12345" required>Enter a number</kg-input>
-            <kg-input type="number" color="primary" appearance="fill" placeholder="Ex. 12345">
-                Enter a number
+            <kg-input type="number" color="primary" placeholder="Ex. 12345" label="Enter a number"></kg-input>
+            <kg-input type="date" color="primary" placeholder="Ex. 12345" label="Enter a date" required></kg-input>
+            <kg-input type="number" color="primary" appearance="fill" placeholder="Ex. 12345" label="Enter a number">
                 <i class="material-icons" slot="icon">add</i>
             </kg-input>
-            <kg-input type="date" color="primary" appearance="fill" placeholder="Ex. 12345" required>
-                Enter a number
+            <kg-input type="date" color="primary" appearance="fill" placeholder="Ex. 12345" label="Enter a date" required>
                 <i class="material-icons" slot="icon">today</i>
             </kg-input>
-            <kg-input type="text" color="primary" appearance="outline" class="custom-primary" placeholder="Ex. Meow meow meow" >Enter text</kg-input>
-            <kg-input type="text" color="primary" appearance="outline" class="custom-primary" placeholder="Ex. Meow meow meow" required>Enter text</kg-input>
-            <kg-input type="tel" color="accent" placeholder="Ex. (319) 931-3212" value="Daddy wasnt there" disabled>Enter a phone number pretty please</kg-input>
-            <kg-input type="tel" color="accent" appearance="fill" placeholder="Ex. (319) 931-3212" value="Daddy wasnt there" disabled>Enter a phone number pretty please</kg-input>
-            <kg-input type="tel" color="accent" appearance="outline" placeholder="Ex. (319) 931-3212" value="Daddy wasnt there" disabled>Enter a phone number pretty please</kg-input>
+            <kg-input type="text" color="primary" appearance="outline" class="custom-primary" placeholder="Ex. Meow meow meow" label="Enter text"></kg-input>
+            <kg-input type="text" color="primary" appearance="outline" class="custom-primary" placeholder="Ex. Meow meow meow" label="Enter text" required></kg-input>
+            <kg-input type="tel" color="accent" placeholder="Ex. (319) 931-3212" value="Daddy wasnt there" Label="Enter a phone number pretty please" disabled></kg-input>
+            <kg-input type="tel" color="accent" appearance="fill" placeholder="Ex. (319) 931-3212" value="Daddy wasnt there" Label="Phone number" disabled></kg-input>
+            <kg-input type="tel" color="accent" appearance="outline" placeholder="Ex. (319) 931-3212" value="Daddy wasnt there" Label="Phone number" disabled></kg-input>
         </p>
     </body>
 </html>

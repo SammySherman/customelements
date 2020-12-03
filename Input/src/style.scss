@@ -14,11 +14,10 @@
       position: relative;
       width: 100%;
       display: inline-block;
-      border-bottom: 1px solid rgba(0,0,0,.54);;
+      border-bottom: 1px solid rgba(0,0,0,.54);
       .date-icon {
         display: none;
         cursor: pointer;
-        padding-right: 10px;
         color:rgba(0,0,0,.54);
         user-select: none;
       }
@@ -114,15 +113,9 @@
       }
     }
 
-    .overlay, .calendar {
+    .calendar {
       display: none;
     }
-
-    //.calendar {
-    //  display: none;
-    //  position: absolute;
-    //}
-
   }
 }
 :host([color=primary]) {
@@ -226,6 +219,9 @@
       padding-left: 10px;
       padding-right: 10px;
     }
+    .date-icon {
+      padding-right: 10px;
+    }
     .error {
       left: 10px;
       right: 10px;
@@ -265,13 +261,6 @@
       right: 0;
       background: white;
     }
-    .overlay {
-      position: fixed;
-      top:0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-    }
     .input {
       .date-icon {
         display: initial;
@@ -279,7 +268,7 @@
     }
 
     &.show-calendar {
-      .overlay, .calendar {
+      .calendar {
         display: initial;
       }
     }
